@@ -1,43 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>おみくじ</title>
 
-export default function OmikujiApp() {
-  const fortunes = [
-    { name: '大吉', color: 'text-red-600', msg: '最高の運勢です！新しいことに挑戦してみましょう。' },
-    { name: '中吉', color: 'text-orange-600', msg: '良い流れが来ています。焦らず進みましょう。' },
-    { name: '吉', color: 'text-green-600', msg: '安定した一日になりそうです。' },
-    { name: '小吉', color: 'text-blue-600', msg: '小さな幸せを大切にしましょう。' },
-    { name: '末吉', color: 'text-purple-600', msg: 'これから運気が上向いていきます。' },
-    { name: '凶', color: 'text-gray-700', msg: '今日は慎重に。無理せず落ち着いて行動しましょう。' }
-  ];
-
-  const [result, setResult] = React.useState(null);
-
-  const draw = () => {
-    const r = fortunes[Math.floor(Math.random() * fortunes.length)];
-    setResult(r);
-  };
-
-  return (
-    <div className="min-h-screen bg-gradient-to-b from-red-50 to-yellow-50 flex items-center justify-center p-6">
-      <div className="bg-white rounded-3xl shadow-xl p-8 max-w-md w-full text-center">
-        <h1 className="text-4xl font-bold mb-2">🎋 おみくじ 🎋</h1>
-        <p className="text-gray-500 mb-6">ボタンを押して運勢を占おう</p>
-
-        <button
-          onClick={draw}
-          className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-2xl text-lg font-bold"
-        >
-          おみくじを引く
-        </button>
-
-        {result && (
-          <div className="mt-8">
-            <div className={`text-5xl font-bold ${result.color}`}>
-              {result.name}
-            </div>
-            <p className="mt-4 text-lg">{result.msg}</p>
-          </div>
-        )}
-      </div>
-    </div>
-  );
+<style>
+body{
+    font-family:sans-serif;
+    text-align:center;
+    background:#fff8e8;
+    padding:50px;
 }
+
+h1{
+    color:#d32f2f;
+}
+
+button{
+    font-size:20px;
+    padding:15px 30px;
+    border:none;
+    border-radius:10px;
+    background:#d32f2f;
+    color:white;
+    cursor:pointer;
+}
+
+#result{
+    margin-top:30px;
+    font-size:48px;
+    font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🎋 おみくじ 🎋</h1>
+
+<button onclick="drawFortune()">
+おみくじを引く
+</button>
+
+<div id="result"></div>
+
+<script>
+function drawFortune(){
+
+const fortunes = [
+"大吉",
+"中吉",
+"吉",
+"小吉",
+"末吉",
+"凶"
+];
+
+const random =
+Math.floor(Math.random()*fortunes.length);
+
+document.getElementById("result").innerHTML =
+fortunes[random];
+}
+</script>
+
+</body>
+</html>
